@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css'>
+<link rel='stylesheet' href='https://unpkg.com/@mdi/font@6.x/css/materialdesignicons.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900'>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head>
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    #app {
+      max-width: 600px;
+      margin: 0 auto;
+      color: dimgray;
+      background-color: #fff;
+    }
+    #schedule {
+      margin-top: 20px;
+    }
+
+    .event {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+     <v-app>
+      <v-content>
+        <v-container>
+          <v-row
+                class="text-h3 mb-3 mt-3"
+                justify="center"
+                >
+                Time Schedule
+          </v-row>
+        <div id="schedule">
+          <div v-for="(event, index) in events" :key="index" class="event">
+            <div class="time">{{ event.time }}</div>
+            <div class="description">{{ event.description }}</div>
+            <div class="actions">
+              <v-btn v-on:click="editEvent(index)"
+                   fab
+                   dark
+                   small
+                   color="#F8BBD0"
+                   class="mr-3"
+                >
+                  <v-icon dark>
+                    mdi-square-edit-outline
+                  </v-icon>
+                </v-btn>
+              <v-btn v-on:click="deleteEvent(index)"
+                   fab
+                   dark
+                   small
+                   color="#F8BBD0"
+                   class="ml-3"
+                >
+                  <v-icon dark>
+                    mdi-delete
+                  </v-icon>
+                </v-btn>
+            </div>
+          </div>
+          <div class="add-event">
+            <v-row align="center" justify="center">
+              <v-col cols="3">
+                <v-text-field
+                  v-model="newEvent.time"
+                  label="時間を入力"
+                  placeholder="時間を入力…"
+                  solo
+                  background-color="#F8BBD0"
+                  class="mt-8"
+                ></v-text-field>
+              </v-col>
+
+              <v-col cols="7">
+                <v-text-field
+                  v-model="newEvent.description"
+                  label="予定を入力"
+                  placeholder="予定を入力…"
+                  solo
+                  background-color="#F8BBD0"
+                  class="mt-8"
+                ></v-text-field>
+              </v-col>
+
+              <v-col cols="2">
+                <v-btn v-on:click="addEvent"
+                   fab
+                   dark
+                   small
+                   color="#F8BBD0"
+                >
+                  <v-icon dark>
+                    mdi-plus
+                  </v-icon>
+                </v-btn>
+              </v-col>
+            </v-row>
+
+          </div>
+        </div>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+</body>
+</html>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.prod.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
